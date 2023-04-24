@@ -31,7 +31,7 @@ export const loadTemplate = async (path) => {
 }
 
 // function to dynamically load the header and footer into a page
-export const loadHeaderFooter = async () => {
+export const loadHeaderFooter = async (keyword) => {
     const headerTemplate = await loadTemplate('/motors/partials/header.html');
     const headerElement = document.querySelector('#main-header');
 
@@ -40,6 +40,9 @@ export const loadHeaderFooter = async () => {
 
     renderWithTemplate(headerTemplate, headerElement);
     renderWithTemplate(footerTemplate, footerElement);
+    if (keyword) {
+        document.querySelector('#search-bar').value = keyword;
+    }
 }
 
 export const loadNav = async () => {

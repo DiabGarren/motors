@@ -1,12 +1,10 @@
 import { getParam, loadHeaderFooter, loadNav } from './utils.mjs'
-
-loadHeaderFooter();
-loadNav();
+import Search from './Search.mjs';
 
 const params = getParam('q');
+loadHeaderFooter(params);
+loadNav();
 
-if (!params) {
-    window.location = '/motors/';
-} else {
-    console.log(params);
-}
+
+const search = new Search(params);
+search.buildSearch(document.querySelector('#search-wrapper'));
